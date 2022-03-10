@@ -28,7 +28,7 @@ for (let i = 0; i < filesArr.length; i++){
     let doesExist = fs.existsSync(filesArr[i]);
     if (!doesExist) {
         console.log("One or more File(s) do not exist ");
-        return;
+        process.exit();
     }
 }
 
@@ -36,12 +36,12 @@ for (let i = 0; i < filesArr.length; i++){
 let content = "";
 for (let i = 0; i < filesArr.length; i++){
     let fileContent = fs.readFileSync(filesArr[i]);
-    content = content + fileContent + "\n";  // "\r\n" for windows laptop
+    content = content + fileContent + "\r\n";  // "\r\n" for windows laptop
                      
 }
 console.log(content);
 
-let contentArr = content.split("\n"); // "\r\n" for windows laptop
+let contentArr = content.split("\r\n"); // "\r\n" for windows laptop
 console.table(contentArr);
 
 //check if -s is present or not
